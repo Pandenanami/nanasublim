@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nanasublim — sublimados de autor</title>
+<meta name="description" content="Tazas, remeras, mousepads y más, sublimados a pedido. Elegí tu diseño y coordinamos todo por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #120B0D;
+    --bg-card: #1B1214;
+    --bg-card-alt: #1F1518;
+    --ink: #F4ECE6;
+    --ink-soft: rgba(244,236,230,0.6);
+    --ink-faint: rgba(244,236,230,0.38);
+    --red: #A32233;
+    --red-bright: #C22A3D;
+    --gold: #C9A15A;
+    --line: rgba(244,236,230,0.12);
+    --radius: 2px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  a{ color: inherit; }
+  img{ max-width: 100%; display:block; }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* -------- header -------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(18,11,13,0.86);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .brand{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 0.03em;
+  }
+  .brand span{ color: var(--red-bright); font-style: normal; }
+  .nav-links{
+    display:flex;
+    gap: 34px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .nav-links a{ text-decoration:none; color: var(--ink-soft); transition: color .25s; }
+  .nav-links a:hover{ color: var(--gold); }
+  .nav-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    text-decoration:none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all .25s ease;
+  }
+  .nav-cta:hover{ background: var(--gold); color: var(--bg); }
+
+  @media (max-width: 760px){
+    .nav-links{ display:none; }
+  }
+
+  .hairline{ height:1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity:0.6; }
+
+  /* -------- hero -------- */
+  .hero{
+    padding: 110px 0 92px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 70px;
+    align-items:center;
+  }
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero{ padding: 64px 0 56px; }
+  }
+
+  .hero h1{
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-top: 18px;
+    font-weight: 400;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--red-bright);
+    font-weight: 500;
+  }
+  .hero p.lead{
+    margin-top: 24px;
+    max-width: 44ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    font-weight: 300;
+  }
+  .hero-actions{
+    margin-top: 38px;
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    padding: 15px 28px;
+    border-radius: var(--radius);
+    text-decoration:none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all .25s ease;
+  }
+  .btn-primary{
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn-primary:hover{ background: var(--gold); }
+  .btn-secondary{
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-secondary:hover{ border-color: var(--gold); color: var(--gold); }
+
+  /* aura visual — signature element */
+  .aura-card{
+    position: relative;
+    aspect-ratio: 1/1;
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 50% 45%, rgba(163,34,51,0.28), transparent 62%),
+      var(--bg-card);
+    overflow: hidden;
+  }
+  .aura-card::after{
+    content:"";
+    position:absolute;
+    inset: 18px;
+    border: 1px solid rgba(201,161,90,0.18);
+    pointer-events:none;
+  }
+  .aura-ring-outer, .aura-ring-inner{
+    position:absolute;
+    top:50%; left:50%;
+    border-radius:50%;
+    transform: translate(-50%,-50%);
+  }
+  .aura-ring-outer{
+    width: 62%;
+    aspect-ratio: 1/1;
+    border: 1px solid rgba(201,161,90,0.5);
+    animation: aura-rotate 22s linear infinite;
+  }
+  .aura-ring-inner{
+    width: 44%;
+    aspect-ratio: 1/1;
+    border: 1px dashed rgba(201,161,90,0.28);
+    animation: aura-rotate-rev 16s linear infinite;
+  }
+  .aura-core{
+    position:absolute;
+    top:50%; left:50%;
+    width: 24%;
+    aspect-ratio: 1/1;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--red-bright), rgba(163,34,51,0) 72%);
+    filter: blur(4px);
+    animation: aura-pulse 6.5s ease-in-out infinite;
+  }
+  @keyframes aura-rotate{ to{ transform: translate(-50%,-50%) rotate(360deg); } }
+  @keyframes aura-rotate-rev{ to{ transform: translate(-50%,-50%) rotate(-360deg); } }
+  @keyframes aura-pulse{
+    0%,100%{ opacity:0.75; transform: translate(-50%,-50%) scale(1); }
+    50%{ opacity:1; transform: translate(-50%,-50%) scale(1.1); }
+  }
+  .aura-label{
+    position:absolute;
+    bottom: 22px;
+    left: 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .aura-label b{ color: var(--gold); font-weight: 500; }
+
+  @media (prefers-reduced-motion: reduce){
+    .aura-ring-outer, .aura-ring-inner, .aura-core{ animation: none; }
+  }
+
+  /* -------- section shell -------- */
+  section{ padding: 92px 0; position:relative; z-index:1; }
+  .section-head{
+    max-width: 620px;
+    margin-bottom: 50px;
+  }
+  .section-head h2{
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    margin-top: 12px;
+    font-weight: 400;
+  }
+  .section-head p{
+    color: var(--ink-soft);
+    margin-top: 16px;
+  }
+
+  /* -------- catalog -------- */
+  .catalog-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 920px){ .catalog-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 520px){ .catalog-grid{ grid-template-columns: 1fr; } }
+
+  .prod-card{
+    background: var(--bg-card);
+    padding: 30px 26px;
+    position: relative;
+    overflow:hidden;
+    transition: background .3s ease;
+  }
+  .prod-card:hover{ background: var(--bg-card-alt); }
+  .prod-monogram{
+    width: 100%;
+    aspect-ratio: 4/3;
+    margin-bottom: 22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position: relative;
+    border: 1px solid var(--line);
+  }
+  .prod-monogram span{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 3.6rem;
+    color: var(--ink-faint);
+    transition: color .3s ease;
+  }
+  .prod-card:hover .prod-monogram span{ color: var(--red-bright); }
+  .prod-monogram::before{
+    content:"";
+    position:absolute;
+    left: 14px; top:14px;
+    width: 10px; height: 10px;
+    border-top: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+    opacity: 0.7;
+  }
+  .prod-monogram::after{
+    content:"";
+    position:absolute;
+    right: 14px; bottom:14px;
+    width: 10px; height: 10px;
+    border-bottom: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    opacity: 0.7;
+  }
+
+  .prod-card h3{ font-size: 1.25rem; font-weight: 400; }
+  .prod-card .tag{
+    display:inline-block;
+    margin-top: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+  }
+  .prod-card p.desc{
+    margin-top: 10px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  /* -------- how it works -------- */
+  .steps{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 780px){ .steps{ grid-template-columns: 1fr; } }
+  .step{
+    background: var(--bg);
+    padding: 34px 30px;
+  }
+  .step .num{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--gold);
+  }
+  .step h3{ font-size: 1.3rem; margin-top: 14px; font-weight: 400; }
+  .step p{ color: var(--ink-soft); margin-top: 12px; font-size: 0.94rem; }
+
+  /* -------- why us -------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 780px){ .why-grid{ grid-template-columns: 1fr; } }
+  .why-item{
+    background: var(--bg-card);
+    padding: 30px 26px;
+  }
+  .why-item h3{ font-size: 1.1rem; font-weight: 500; font-family: 'Cormorant Garamond', serif; }
+  .why-item p{ margin-top:12px; font-size: 0.92rem; color: var(--ink-soft); }
+
+  /* -------- cta band -------- */
+  .cta-band{
+    text-align:center;
+    padding: 100px 0;
+  }
+  .cta-band h2{ font-size: clamp(2rem, 4vw, 2.9rem); font-weight: 400; }
+  .cta-band h2 em{ font-style: italic; color: var(--red-bright); }
+  .cta-band p{ color: var(--ink-soft); margin-top: 16px; }
+  .cta-band .btn{ margin-top: 32px; }
+
+  /* -------- footer -------- */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 40px 0;
+  }
+  .footer-row{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .footer-row .brand{ font-size: 1.15rem; }
+  footer .muted{
+    color: var(--ink-faint);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* -------- floating whatsapp -------- */
+  .float-wa{
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 60;
+    background: var(--bg-card);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.4);
+    transition: all .25s ease;
+  }
+  .float-wa:hover{ background: var(--gold); color: var(--bg); }
+  .float-wa svg{ width: 24px; height: 24px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">nana<span>sublim</span></div>
+    <nav class="nav-links">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#como-pedir">Cómo pedir</a>
+      <a href="#por-que">Por qué elegirnos</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/5491100000000?text=Hola%20nanasublim!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
+      Pedir por WhatsApp
+    </a>
+  </div>
+</header>
+
+<div class="hairline"></div>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Sublimados de autor</p>
+        <h1>Objetos cotidianos, <em>elevados</em> a pieza de colección.</h1>
+        <p class="lead">Tazas, remeras, mousepads y más. Elegís el diseño, nosotros lo llevamos a cada pieza con precisión, y coordinamos la entrega directo por WhatsApp.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/5491100000000?text=Hola%20nanasublim!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">Hacer un pedido</a>
+          <a class="btn btn-secondary" href="#catalogo">Ver catálogo</a>
+        </div>
+      </div>
+      <div class="aura-card">
+        <div class="aura-ring-outer"></div>
+        <div class="aura-ring-inner"></div>
+        <div class="aura-core"></div>
+        <div class="aura-label">nanasublim · <b>edición a pedido</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalogo">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Catálogo</p>
+        <h2>Lo que sublimamos</h2>
+        <p>Un catálogo variado para regalar, usar o revender. Cada pieza se prepara a pedido con tu diseño o el que elijamos juntos.</p>
+      </div>
+      <div class="catalog-grid">
+        <div class="prod-card">
+          <div class="prod-monogram"><span>T</span></div>
+          <h3>Tazas</h3>
+          <p class="desc">Cerámicas y mágicas, ideales para regalos personalizados.</p>
+          <span class="tag">DESDE $ A CONFIRMAR</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-monogram"><span>R</span></div>
+          <h3>Remeras</h3>
+          <p class="desc">Textil premium para diseños grandes, frases o fotos.</p>
+          <span class="tag">DESDE $ A CONFIRMAR</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-monogram"><span>M</span></div>
+          <h3>Mousepads</h3>
+          <p class="desc">Ideales para gamers, oficinas y setups personalizados.</p>
+          <span class="tag">DESDE $ A CONFIRMAR</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-monogram"><span>+</span></div>
+          <h3>Y mucho más</h3>
+          <p class="desc">Almohadones, llaveros, botellas — consultanos tu idea.</p>
+          <span class="tag">A PEDIDO</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-pedir">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Cómo pedir</p>
+        <h2>De la idea al objeto, en tres pasos</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <p class="num">I</p>
+          <h3>Elegís el producto</h3>
+          <p>Mirá el catálogo y decidí qué querés sublimar: taza, remera, mousepad o lo que se te ocurra.</p>
+        </div>
+        <div class="step">
+          <p class="num">II</p>
+          <h3>Nos escribís por WhatsApp</h3>
+          <p>Nos contás tu diseño o idea, y te confirmamos precio, tiempos y forma de pago.</p>
+        </div>
+        <div class="step">
+          <p class="num">III</p>
+          <h3>Coordinamos la entrega</h3>
+          <p>Preparamos tu pedido con cuidado y coordinamos retiro o envío.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="por-que">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Por qué nanasublim</p>
+        <h2>Precisión en cada detalle</h2>
+        <p>Cada pieza pasa por prensa a mano, no por una línea automática. Eso se nota en el resultado final.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>Diseños personalizados</h3>
+          <p>Tu foto, tu frase o tu logo, adaptado al producto que elijas.</p>
+        </div>
+        <div class="why-item">
+          <h3>Atención directa</h3>
+          <p>Hablás con nosotros por WhatsApp, sin formularios ni esperas.</p>
+        </div>
+        <div class="why-item">
+          <h3>Calidad cuidada</h3>
+          <p>Materiales elegidos con cuidado y control de calidad en cada tanda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <p class="eyebrow">¿Tenés una idea?</p>
+      <h2>Contanos qué querés <em>sublimar</em></h2>
+      <p>Respondemos rápido por WhatsApp y te ayudamos a definir el diseño.</p>
+      <a class="btn btn-primary" href="https://wa.me/5491100000000?text=Hola%20nanasublim!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">Escribinos ahora</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="brand">nana<span>sublim</span></div>
+    <p class="muted">Sublimados a pedido</p>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/5491100000000?text=Hola%20nanasublim!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2m0 1.67c2.24 0 4.34.87 5.92 2.45a8.23 8.23 0 0 1 2.42 5.85c0 4.56-3.71 8.28-8.29 8.28a8.3 8.3 0 0 1-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.27-4.4c0-4.58 3.72-8.32 8.23-8.32M8.53 6.9c-.16 0-.43.06-.65.31s-.86.84-.86 2.04.88 2.37 1 2.53c.13.17 1.7 2.77 4.29 3.8 2.15.85 2.59.68 3.06.64.47-.05 1.5-.62 1.72-1.21.21-.6.21-1.11.15-1.22-.06-.1-.23-.17-.48-.29-.25-.13-1.5-.74-1.73-.83-.23-.08-.4-.13-.57.13-.17.25-.65.83-.8 1-.15.17-.29.19-.55.06-.25-.13-1.06-.39-2.02-1.24-.75-.66-1.25-1.48-1.4-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.4-.79-1.91-.2-.5-.41-.43-.57-.44-.14-.01-.31-.01-.48-.01Z"/></svg>
+</a>
+
+</body>
+</html>
